@@ -1,0 +1,232 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    font-family: 'Special Elite', 'Courier New', Courier, monospace;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Change from center to flex-start to push text upwards */
+    padding-bottom: 20px; /* Add a bit of padding to move everything up */
+}
+  
+.text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-weight: 50; /* Optional: Remove if you want standard weight */
+    opacity: 0.85;
+}
+  
+.title .text, .subtitle .text {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0ch;
+}
+
+.title .text {
+    animation: typeTitle 3s steps(8) 1s forwards;
+}
+  
+.subtitle .text {
+    animation: typeSubtitle 4s steps(28) 5s forwards;
+}
+  
+.cursor {
+    display: inline-block;
+    width: 2px;
+    background-color: white;
+    margin-left: 2px;
+    animation: blink 0.75s step-end infinite;
+}
+  
+#cursor1 {
+    animation: blink 0.75s step-end infinite, hideCursor 0s linear 4s forwards;
+}
+  
+#cursor2 {
+    animation: blink 0.75s step-end infinite, hideCursor 0s linear 9s forwards;
+}
+  
+@keyframes typeTitle {
+    from { width: 0ch; }
+    to { width: 8ch; }
+}
+  
+@keyframes typeSubtitle {
+    from { width: 0ch; }
+    to { width: 28ch; }
+}
+  
+@keyframes blink {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+  
+@keyframes hideCursor {
+    to { opacity: 0; }
+}
+
+.title {
+    font-family: 'Punk Typewriter', 'Courier New', Courier, monospace;
+  font-size: 6rem;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  color: #f0f0f0;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+}
+
+.subtitle {
+    margin-top: 10px;
+    font-family: 'Punk Typewriter', 'Courier New', Courier, monospace;
+  font-size: 3.5rem;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  color: #f0f0f0;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+}
+
+.commune-btn {
+    display: none; /* Initially hidden */
+    font-family: 'Special Elite', 'Courier New', Courier, monospace;
+    font-size: 1.5rem;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    padding: 12px 20px;
+    margin-top: 10px; /* Space between text and button */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    outline: none;
+    position: absolute; /* Keep the button in the same place and out of the flow */
+    z-index: 1;
+    top: calc(75% + 10px); /* Position the button just below the text */
+}
+
+.commune-btn:hover {
+    background-color: white;
+    color: black;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px 2px rgba(255, 255, 255, 0.7);
+}
+
+.commune-btn:focus {
+    border-color: rgb(255, 255, 255);
+    outline: none;
+}
+
+.commune-btn:active {
+    transform: scale(0.95);
+}
+
+/* Pulse animation (slowed down) */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.commune-btn {
+    animation: pulse 4s infinite ease-in-out; /* Slowed down the pulse */
+}
+
+body {
+  font-family: 'Special Elite', 'Courier New', Courier, monospace;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.book-container {
+  text-align: center;
+}
+
+.books {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.book {
+  width: 100px;
+  height: 150px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.book:hover {
+  transform: scale(1.1);
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+
+
+.book img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;         /* or "contain" if you want space around */
+  border-radius: 10px;       /* match book’s rounded corners */
+  image-rendering: pixelated; /* this makes pixel art crisp */
+}
+
+
+
+
+
+
+.ascii-root {
+  position: fixed;
+  top: 0;
+  font-family: monospace;
+  font-size: 16px;
+  white-space: pre;
+  color: #3e3e3e;
+  z-index: -1;
+  opacity: 0;
+  animation: growTextRoot 5s ease-in forwards;
+}
+
+.left-root {
+  left: 10px;
+  text-align: left;
+}
+
+.right-root {
+  right: 10px;
+  text-align: right;
+}
+
+@keyframes growTextRoot {
+  0% {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
